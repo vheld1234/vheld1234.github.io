@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const username = loginForm.username.value;
       const password = loginForm.password.value;
       
-      const button = document.querySelector('.login-button');
+      const button = document.getElementById('loginButton');
       button.classList.add('loading');
       try {
         const response = await fetch('https://electrical-db-service.onrender.com/api/authenticate', {
