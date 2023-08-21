@@ -12,9 +12,15 @@ form.addEventListener("submit", function(event) {
     const token = localStorage.getItem('token')
     const apiUrl = 'https://electrical-db-service.onrender.com/api/data';
 
-    fetch(apiUrl+`?param=${inputValue}`, { method: 'GET', headers: {
-        Authorization: `Bearer ${token}`
-    } })
+    fetch(apiUrl,
+    {   
+        method: 'POST', 
+        headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ inputValue })
+    })
     .then(response => {
         if(response.status !== 200) {
             return response.json().then(data => {
