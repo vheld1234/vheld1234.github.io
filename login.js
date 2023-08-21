@@ -10,7 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const username = loginForm.username.value;
       const password = loginForm.password.value;
       
+      const loginButton = document.querySelector('#loginButton');
       const spinner = document.getElementById('spinner');
+
+      loginButton.disabled = true
       spinner.style.display = 'block';
       try {
         const response = await fetch('https://electrical-db-service.onrender.com/api/authenticate', {
@@ -40,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (error) {
         console.error('Error:', error);
       }
+      loginButton.disabled = false;
       spinner.style.display = 'none';
     });
   });
