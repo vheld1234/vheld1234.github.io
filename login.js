@@ -9,7 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
       const username = loginForm.username.value;
       const password = loginForm.password.value;
-  
+      
+      const button = document.querySelector('.login-button');
+      button.classList.add('loading');
       try {
         const response = await fetch('https://electrical-db-service.onrender.com/api/authenticate', {
           method: 'POST',
@@ -38,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (error) {
         console.error('Error:', error);
       }
+      button.classList.remove('loading');
     });
   });
   
